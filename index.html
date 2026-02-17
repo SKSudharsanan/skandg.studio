@@ -1,0 +1,1145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SKANDG.STUDIO | Engineering x AI x Storytelling</title>
+  <meta name="description" content="SKANDG.STUDIO builds software, AI systems, and cinematic product stories for founders, creators, and startups.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="SKANDG.STUDIO">
+  <meta property="og:description" content="Engineering, AI consulting, and creative storytelling for ambitious teams.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --surface: #0d0d0d;
+      --surface-2: #111111;
+      --text: #ffffff;
+      --muted: #c7c7c7;
+      --line: #242424;
+      --accent: #ff6a00;
+      --accent-soft: rgba(255, 106, 0, 0.22);
+      --container: min(1160px, 92vw);
+      --radius: 18px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #000000;
+      color: var(--text);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: var(--container);
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+
+    h1, h2, h3 {
+      font-family: "Bebas Neue", sans-serif;
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      font-weight: 400;
+    }
+
+    p {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    section {
+      padding: 4.5rem 0;
+      position: relative;
+    }
+
+    .site-header {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 40;
+      background: rgba(0, 0, 0, 0.52);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .nav-shell {
+      width: var(--container);
+      margin-inline: auto;
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.06em;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: #d6d6d6;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.92rem 1.55rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(255, 106, 0, 0.32);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(255, 106, 0, 0.4);
+      outline: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid #2c2c2c;
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: clip;
+      border-bottom: 1px solid var(--line);
+      padding-top: 6rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-bg::before,
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+    }
+
+    .hero-bg::before {
+      width: 48vw;
+      height: 48vw;
+      min-width: 260px;
+      min-height: 260px;
+      top: -18vw;
+      right: -14vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 106, 0, 0.38), transparent 66%);
+      filter: blur(12px);
+      animation: orbitGlow 9s ease-in-out infinite alternate;
+    }
+
+    .hero-bg::after {
+      inset: auto -20% 16% -20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 106, 0, 0.9), transparent);
+      animation: beamSweep 6.5s linear infinite;
+    }
+
+    .grid-noise {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(circle at center, black 34%, transparent 82%);
+      opacity: 0.75;
+      transform: perspective(600px) rotateX(62deg) translateY(36vh) scale(1.85);
+    }
+
+    .hero-shell {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3.3rem, 11vw, 8.7rem);
+      margin-bottom: 1rem;
+      transform: translateY(16px);
+      opacity: 0;
+      animation: liftIn 0.95s ease forwards;
+      animation-delay: 0.15s;
+    }
+
+    .hero-copy .lead {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      max-width: 58ch;
+      transform: translateY(14px);
+      opacity: 0;
+      animation: liftIn 0.9s ease forwards;
+      animation-delay: 0.34s;
+    }
+
+    .headline-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .headline-line span {
+      display: block;
+      transform: translateY(112%);
+      animation: revealLine 0.78s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    .headline-line:nth-child(1) span { animation-delay: 0.18s; }
+    .headline-line:nth-child(2) span { animation-delay: 0.3s; }
+    .headline-line:nth-child(3) span { animation-delay: 0.42s; }
+
+    .hero-actions {
+      margin-top: 1.45rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.72rem;
+      transform: translateY(14px);
+      opacity: 0;
+      animation: liftIn 0.9s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .hero-panel {
+      justify-self: end;
+      width: min(390px, 100%);
+      border-radius: calc(var(--radius) + 2px);
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border: 1px solid #242424;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform 0.18s ease;
+      animation: liftIn 1s ease forwards;
+      animation-delay: 0.58s;
+      opacity: 0;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: conic-gradient(from 80deg, transparent, rgba(255, 106, 0, 0.8), transparent 48%);
+      opacity: 0.55;
+      animation: spinSlow 7.8s linear infinite;
+      pointer-events: none;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      padding: 1px;
+    }
+
+    .panel-kicker {
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.73rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .panel-title {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.04em;
+      font-size: 2.05rem;
+      line-height: 0.95;
+      margin-bottom: 0.75rem;
+    }
+
+    .panel-points {
+      list-style: none;
+      display: grid;
+      gap: 0.42rem;
+      margin-bottom: 1rem;
+    }
+
+    .panel-points li {
+      color: #e5e5e5;
+      font-size: 0.95rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .panel-points li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 0.58em;
+    }
+
+    .signal-row {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .signal {
+      width: 100%;
+      height: 4px;
+      background: #1d1d1d;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .signal::after {
+      content: "";
+      display: block;
+      width: 35%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: signalMove 2.2s ease-in-out infinite;
+    }
+
+    .signal:nth-child(2)::after { animation-delay: 0.35s; }
+    .signal:nth-child(3)::after { animation-delay: 0.7s; }
+
+    .chips {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      opacity: 0;
+      animation: liftIn 0.9s ease forwards;
+      animation-delay: 0.62s;
+    }
+
+    .chip {
+      border: 1px solid #2c2c2c;
+      border-radius: 999px;
+      padding: 0.35rem 0.72rem;
+      font-size: 0.78rem;
+      color: #dddddd;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 40px;
+      border: 1px solid #2c2c2c;
+      border-radius: 20px;
+      display: grid;
+      justify-items: center;
+      padding-top: 6px;
+      opacity: 0.85;
+    }
+
+    .hero-scroll::after {
+      content: "";
+      width: 4px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      animation: scrollDot 1.7s ease-in-out infinite;
+    }
+
+    .split-banner {
+      border-bottom: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      overflow: hidden;
+      background: #050505;
+      padding: 0.75rem 0;
+    }
+
+    .ticker {
+      display: flex;
+      gap: 2rem;
+      white-space: nowrap;
+      min-width: max-content;
+      animation: tickerMove 24s linear infinite;
+    }
+
+    .ticker span {
+      font-family: "Bebas Neue", sans-serif;
+      color: #f0f0f0;
+      letter-spacing: 0.07em;
+      font-size: clamp(1.2rem, 2.3vw, 1.9rem);
+    }
+
+    .ticker span i {
+      color: var(--accent);
+      font-style: normal;
+      padding: 0 0.75rem;
+    }
+
+    .overview {
+      background: radial-gradient(1000px 600px at 10% -10%, rgba(255, 106, 0, 0.16), transparent 60%);
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .pillars {
+      margin-top: 1.8rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.95rem;
+    }
+
+    .pillar {
+      border: 1px solid var(--line);
+      background: linear-gradient(170deg, var(--surface), var(--surface-2));
+      border-radius: var(--radius);
+      padding: 1.2rem 1.1rem;
+      box-shadow: var(--shadow);
+      transform: translateY(12px);
+      opacity: 0;
+    }
+
+    .pillar h3 {
+      font-size: 2rem;
+      margin-bottom: 0.58rem;
+    }
+
+    .services-home {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #050505;
+    }
+
+    .founder {
+      background:
+        radial-gradient(760px 420px at 6% 0%, rgba(255, 106, 0, 0.14), transparent 62%),
+        #040404;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .founder-shell {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .founder-card {
+      border: 1px solid #272727;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, #0e0e0e, #090909);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      transform: translateY(12px);
+      opacity: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .founder-name {
+      font-size: clamp(2rem, 4.4vw, 3.4rem);
+      margin-bottom: 0.35rem;
+    }
+
+    .founder-role {
+      color: #f2f2f2;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      max-width: 34ch;
+    }
+
+    .founder-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+    }
+
+    .founder-socials a {
+      border: 1px solid #2e2e2e;
+      border-radius: 999px;
+      padding: 0.26rem 0.62rem;
+      color: #e8e8e8;
+      font-size: 0.82rem;
+      line-height: 1.2;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .founder-socials a:hover,
+    .founder-socials a:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .founder-highlights {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .founder-highlights li {
+      border: 1px solid #2c2c2c;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+      padding: 0.58rem 0.68rem;
+      color: #ebebeb;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .founder-highlights li::before {
+      content: none;
+    }
+
+    .founder-copy {
+      border: 1px solid #232323;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.01);
+      padding: 1.2rem;
+      transform: translateY(12px);
+      opacity: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .founder-copy p + p {
+      margin-top: 0.9rem;
+    }
+
+    .services-grid {
+      margin-top: 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 0.95rem;
+    }
+
+    .service-card {
+      grid-column: span 6;
+      border: 1px solid #262626;
+      border-radius: 14px;
+      padding: 1rem;
+      background: linear-gradient(170deg, var(--surface), var(--surface-2));
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      transform: translateY(12px);
+      opacity: 0;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card.full {
+      grid-column: span 12;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .service-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.38rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+    }
+
+    .meta-title {
+      color: var(--text);
+      font-weight: 700;
+      margin: 0.72rem 0 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    .deliverables {
+      list-style: none;
+      display: grid;
+      gap: 0.34rem;
+    }
+
+    .deliverables li {
+      color: var(--muted);
+      position: relative;
+      padding-left: 0.95rem;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .deliverables li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 0.58em;
+    }
+
+    .deliverables a {
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+    }
+
+    .deliverables a:hover,
+    .deliverables a:focus-visible {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .inquiry {
+      padding: 5rem 0 5.2rem;
+      background:
+        radial-gradient(860px 480px at 100% 0%, rgba(255, 106, 0, 0.2), transparent 58%),
+        #000000;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .inquiry-shell {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .inquiry-copy h2 {
+      font-size: clamp(2rem, 4.6vw, 3.65rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-wrap {
+      background: linear-gradient(170deg, #0e0e0e, #111111);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.3rem;
+      box-shadow: var(--shadow);
+      transform: translateY(12px);
+      opacity: 0;
+    }
+
+    .tally-frame {
+      width: 100%;
+      min-height: 560px;
+      border: 0;
+      border-radius: 10px;
+      background: #0c0c0c;
+    }
+
+    .lead-note {
+      margin-top: 0.35rem;
+      font-size: 0.85rem;
+      color: #a6a6a6;
+    }
+
+    .lead-note a {
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+    }
+
+    .lead-note a:hover,
+    .lead-note a:focus-visible {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: #000000;
+      padding: 2.2rem 0 2.6rem;
+    }
+
+    .footer-shell {
+      width: var(--container);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-brand {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.05em;
+      font-size: 1.9rem;
+      line-height: 1;
+    }
+
+    .footer-sub {
+      color: var(--muted);
+      margin-top: 0.2rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.93rem;
+    }
+
+    .footer-socials a {
+      border-bottom: 1px solid transparent;
+      color: #e8e8e8;
+    }
+
+    .footer-socials a:hover,
+    .footer-socials a:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    [data-reveal].is-visible {
+      animation: liftIn 0.75s ease forwards;
+    }
+
+    @keyframes revealLine {
+      to { transform: translateY(0); }
+    }
+
+    @keyframes liftIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes orbitGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-3vw, 4vh) scale(1.08); }
+    }
+
+    @keyframes beamSweep {
+      0% { transform: translateX(-32%); opacity: 0; }
+      12% { opacity: 0.9; }
+      100% { transform: translateX(32%); opacity: 0; }
+    }
+
+    @keyframes spinSlow {
+      to { transform: rotate(1turn); }
+    }
+
+    @keyframes signalMove {
+      0% { transform: translateX(-120%); }
+      55% { transform: translateX(220%); }
+      100% { transform: translateX(220%); }
+    }
+
+    @keyframes tickerMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes scrollDot {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(14px); opacity: 0.35; }
+    }
+
+    @media (max-width: 980px) {
+      section {
+        padding: 3.8rem 0;
+      }
+
+      .hero-shell {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+      }
+
+      .hero-panel {
+        justify-self: stretch;
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card,
+      .service-card.full {
+        grid-column: auto;
+      }
+
+      .inquiry-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        background: rgba(0, 0, 0, 0.85);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 6.8rem;
+      }
+
+      .hero-scroll {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a href="#top" class="brand">SKANDG.STUDIO</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#founder">Founder</a>
+        <a href="#services">Services</a>
+        <a href="#lead-form">Inquiry</a>
+      </nav>
+      <a class="btn btn-primary" href="#lead-form">Work With Us</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg"></div>
+      <div class="grid-noise"></div>
+      <div class="container hero-shell">
+        <div class="hero-copy">
+          <span class="eyebrow">Engineering x AI x Storytelling</span>
+          <h1 id="hero-title">
+            <span class="headline-line"><span>SKANDG.STUDIO</span></span>
+          </h1>
+          <p class="lead">Your idea. Our engineering. Built together.</p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">Explore Services</a>
+            <a href="#lead-form" class="btn btn-secondary">Start Your Project</a>
+          </div>
+          <div class="chips" aria-label="Core strengths">
+            <span class="chip">Software Engineering</span>
+            <span class="chip">AI Systems</span>
+            <span class="chip">Creative Strategy</span>
+            <span class="chip">Product Storytelling</span>
+          </div>
+        </div>
+
+        <aside class="hero-panel" id="hero-panel" aria-label="Studio focus">
+          <p class="panel-kicker">Studio Focus</p>
+          <h2 class="panel-title">Concept to Production</h2>
+          <ul class="panel-points">
+            <li>Ship reliable software and backend systems</li>
+            <li>Embed AI where it creates real leverage</li>
+            <li>Turn technical depth into market-ready narratives</li>
+          </ul>
+          <div class="signal-row" aria-hidden="true">
+            <div class="signal"></div>
+            <div class="signal"></div>
+            <div class="signal"></div>
+          </div>
+        </aside>
+      </div>
+      <div class="hero-scroll" aria-hidden="true"></div>
+    </section>
+
+    <section class="split-banner" aria-label="Studio highlights">
+      <div class="ticker" role="presentation">
+        <span>Custom Software <i>/</i> AI Consulting <i>/</i> Content Systems <i>/</i> Startup Execution <i>/</i></span>
+        <span>Custom Software <i>/</i> AI Consulting <i>/</i> Content Systems <i>/</i> Startup Execution <i>/</i></span>
+      </div>
+    </section>
+
+    <section class="overview" id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Why SKANDG.STUDIO</span>
+          <h2>A Creator-First Technology Partner</h2>
+          <p>Every engagement combines engineering depth, AI capability, and creative direction so your product does not only work at scale, it communicates clearly and converts attention into growth.</p>
+        </div>
+        <div class="pillars">
+          <article class="pillar" data-reveal>
+            <h3>Engineering</h3>
+            <p>Production-grade web applications, backend systems, APIs, and robust tooling built to move from MVP to scale.</p>
+          </article>
+          <article class="pillar" data-reveal>
+            <h3>Intelligence</h3>
+            <p>AI product architecture, workflow automation, and pragmatic integration strategy designed around real use cases.</p>
+          </article>
+          <article class="pillar" data-reveal>
+            <h3>Story</h3>
+            <p>Technical storytelling and content strategy that explains complex products with clarity and premium visual tone.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder" id="founder">
+      <div class="container founder-shell">
+        <aside class="founder-card" data-reveal aria-label="Founder profile">
+          <span class="eyebrow">Founder</span>
+          <h2 class="founder-name">Sudharsanan Kirubanandhan</h2>
+          <p class="founder-role">Software Engineer, AI Consultant, and Tech Creator</p>
+          <nav class="founder-socials" aria-label="Founder links">
+            <a href="https://www.youtube.com/@sksudharsanan" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://instagram.com/sudharsanan_kirubanandhan" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://x.com/sksudharsanan" target="_blank" rel="noopener noreferrer">X</a>
+            <a href="https://www.linkedin.com/in/sksudharsanan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </nav>
+          <ul class="founder-highlights">
+            <li>8 years across software engineering, blockchain infrastructure, and decentralized AI products</li>
+            <li>Built in both startup and enterprise environments</li>
+            <li>200,000+ monthly viewers across YouTube and Instagram</li>
+          </ul>
+        </aside>
+        <article class="founder-copy" data-reveal>
+          <span class="eyebrow">Experience</span>
+          <p>Across 8 years of engineering work, Sudharsanan has built software systems, blockchain infrastructure, and decentralized AI products in both startup and enterprise settings. His work includes backend systems, smart contracts, trading infrastructure, and AI-powered tools.</p>
+          <p>Alongside product engineering, he creates educational storytelling content, Rust tutorials, and AI product showcases on YouTube and Instagram, reaching over 200,000 monthly viewers.</p>
+          <p>He also advises early-stage teams on turning ideas into working products through software development, AI integration, technical writing, and product storytelling. SKANDG.STUDIO was created to combine those strengths into one focused creative technology studio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="services-home" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Capabilities</span>
+          <h2>Services That Drive Momentum</h2>
+          <p>End-to-end support for founders, creators, and startups building ambitious products and brands.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card" data-reveal>
+            <h3>Content Strategy and Creation</h3>
+            <p>End-to-end content creation including technical writing, storytelling, graphic design, and video production. Includes educational content, marketing content, product storytelling, whitepapers, pitch decks, and generative AI video concepts.</p>
+            <p class="meta-title">Deliverables</p>
+            <ul class="deliverables">
+              <li>Text content</li>
+              <li>Whitepapers</li>
+              <li>Pitch decks</li>
+              <li>Graphics</li>
+              <li>Short-form, long-form, and generative AI videos</li>
+              <li>Scriptwriting</li>
+            </ul>
+          </article>
+          <article class="service-card" data-reveal>
+            <h3>Software Development</h3>
+            <p>Custom software development including backend systems, Rust applications, AI integrations, and production-grade tools.</p>
+            <p class="meta-title">Deliverables</p>
+            <ul class="deliverables">
+              <li>Web applications</li>
+              <li>Desktop applications</li>
+              <li>Mobile applications</li>
+              <li>Backend and API systems</li>
+              <li>Rust applications</li>
+              <li>Blockchain applications</li>
+              <li>AI agents</li>
+            </ul>
+          </article>
+          <article class="service-card" data-reveal>
+            <h3>AI Consultation</h3>
+            <p>Consulting for startups and creators to integrate AI into their products and workflows.</p>
+            <p class="meta-title">Deliverables</p>
+            <ul class="deliverables">
+              <li>AI product architecture</li>
+              <li>AI workflow design</li>
+              <li>AI integration strategy</li>
+              <li>AI automation</li>
+            </ul>
+          </article>
+          <article class="service-card" data-reveal>
+            <h3>AI Training and Tech Reviews</h3>
+            <p>Educational training and technical reviews for teams and products.</p>
+            <p class="meta-title">Deliverables</p>
+            <ul class="deliverables">
+              <li>AI training sessions</li>
+              <li>Tech stack reviews</li>
+              <li>Architecture guidance</li>
+              <li>Product feedback</li>
+            </ul>
+          </article>
+          <article class="service-card full" data-reveal>
+            <h3>Podcast and AI Product Showcase</h3>
+            <p>Feature your product on Sudharsanan Kirubanandhan's YouTube and Instagram channels through technical reviews, showcases, and podcast discussions.</p>
+            <p class="meta-title">Platforms</p>
+            <ul class="deliverables">
+              <li>YouTube: <a href="https://www.youtube.com/@sksudharsanan" target="_blank" rel="noopener noreferrer">@sksudharsanan</a></li>
+              <li>Instagram: <a href="https://instagram.com/sudharsanan_kirubanandhan" target="_blank" rel="noopener noreferrer">@sudharsanan_kirubanandhan</a></li>
+              <li>X: <a href="https://x.com/sksudharsanan" target="_blank" rel="noopener noreferrer">@sksudharsanan</a></li>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/sksudharsanan/" target="_blank" rel="noopener noreferrer">/in/sksudharsanan</a></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="inquiry" id="lead-form">
+      <div class="container">
+        <div class="inquiry-shell">
+          <div class="inquiry-copy">
+            <span class="eyebrow">Next Step</span>
+            <h2>Start Building with SKANDG.STUDIO</h2>
+            <p>Share your project goals and service needs. We will define scope, execution model, and delivery roadmap.</p>
+          </div>
+          <div class="form-wrap" data-reveal>
+            <iframe
+              class="tally-frame"
+              data-tally-src="https://tally.so/embed/aQ6d2X?alignLeft=1&hideTitle=1&dynamicHeight=1&formEventsForwarding=1"
+              loading="lazy"
+              title="SKANDG.STUDIO inquiry form">
+            </iframe>
+            <p class="lead-note">If the embedded form does not load, open it directly at <a href="https://tally.so/embed/aQ6d2X?alignLeft=1&hideTitle=1&dynamicHeight=1&formEventsForwarding=1" target="_blank" rel="noopener noreferrer">Tally Form</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-shell">
+      <div>
+        <div class="footer-brand">SKANDG.STUDIO</div>
+        <p class="footer-sub">Engineering x AI x Storytelling</p>
+      </div>
+      <nav class="footer-socials" aria-label="Social links">
+        <a href="https://www.youtube.com/@skandgstudio" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://instagram.com/skandgstudio" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://x.com/skandgstudio" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.linkedin.com/company/skandgstudios" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script async src="https://tally.so/widgets/embed.js"></script>
+  <script>
+    (function () {
+      const revealEls = document.querySelectorAll("[data-reveal]");
+      const io = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        }
+      }, { threshold: 0.2 });
+
+      revealEls.forEach((el) => io.observe(el));
+
+      const panel = document.getElementById("hero-panel");
+      if (panel && window.matchMedia("(pointer:fine)").matches) {
+        const maxTilt = 6;
+        panel.addEventListener("pointermove", (event) => {
+          const rect = panel.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+          const ry = (x - 0.5) * maxTilt * 2;
+          const rx = (0.5 - y) * maxTilt * 2;
+          panel.style.setProperty("--rx", rx.toFixed(2) + "deg");
+          panel.style.setProperty("--ry", ry.toFixed(2) + "deg");
+        });
+        panel.addEventListener("pointerleave", () => {
+          panel.style.setProperty("--rx", "0deg");
+          panel.style.setProperty("--ry", "0deg");
+        });
+      }
+    }());
+  </script>
+</body>
+</html>
